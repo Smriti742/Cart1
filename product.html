@@ -32,16 +32,16 @@ function session(ref)
 {
 	localStorage.setItem("id", ref.id);
 	window.location = "display.html";
-
 }
 
   var request = new XMLHttpRequest();
 
-  request.open("GET", "products.json",true);
+  request.open("GET", "products.json");
+  //request.overrideMimeType("application/json");
   request.send();
 
   request.onreadystatechange = function() {
-   alert("hello");
+   
     if ( request.readyState == 3 ){
       document.getElementById('users').innerHTML = "Loading..."
     }
@@ -60,6 +60,26 @@ function session(ref)
       }
     }
   }
+  
+  function addToFav()
+			{
+				//alert(phone);
+				var AddedFav=JSON.parse(sessionStorage.getItem("AddedFav"));
+				//alert(AddedFav.length);
+				//alert(AddedFav);
+				AddedFav.push(phone);
+				//alert(AddedFav);
+				sessionStorage.setItem("AddedFav",JSON.stringify(AddedFav));
+				//alert(AddedFavs);
+			}
+			
+			function addToCart()
+			{
+				var AddedCart=[];
+				AddedCart=JSON.parse(sessionStorage.getItem("AddedCart"));
+				AddedCart.push(phone);
+				sessionStorage.setItem("AddedCart",JSON.stringify(AddedCart));
+			}			
 </script>
 </head>
 <body>
@@ -129,16 +149,13 @@ function session(ref)
 		<td align="center">WOMEN T SHIRT BROWN DRESS</td>
 	</tr>
 	<tr>
-		<td><input id="dress3cart"  type="image" src="img/cart.jpg" alt="Submit" width="50px" height="50px"></td>
+		<td><input id="dress3cart"type="image" src="img/cart.jpg" alt="Submit" width="50px" height="50px"></td>
 		<td><input id="dress3fav" type="image" src="img/add.png" alt="Submit" width="50px" height="50px"></td>
 	</tr>
 	</table>
 </td>
 </tr>
 </table>
-</div>
-<div class="row" id="users">
-  
- </div>			
+</div>		
 </body>
 </html>

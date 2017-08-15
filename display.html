@@ -13,22 +13,16 @@
 }
 </style>
 <script>
-function change(x) {
-    document.getElementById('main').src = "img/"+ x.id +".jpeg"; 
-}
-
 var phone=localStorage.getItem("id");
 
 var sc1,sc2,sc3;
 var request = new XMLHttpRequest();
 
-  request.open('GET', 'products.json');
-  //request.send();
+  request.open("GET", "products.json");
+  request.send();
  // var name1, id, price, imag;
   
     request.onreadystatechange = function() {
-   
-    alert("mat");
     if( request.readyState == 4) {
       if( request.status >= 200 && request.status ) {
         console.log(request);
@@ -38,8 +32,8 @@ var request = new XMLHttpRequest();
 		var len = products.length;
 		var name = [];
 		for (var i = 0; i < len; i++) {
-        if (products[i].id == phone) {
-		   
+        if (products[i] && products[i].id == phone) {
+		    
              name.push("<br>"+products[i].name+"</br>");
 			 sc1=products[i].src;sc2=products[i].src1;sc3=products[i].src2;
 			 main_img.setAttribute('src', sc1);
@@ -47,7 +41,7 @@ var request = new XMLHttpRequest();
 			 p2.setAttribute('src', sc2);
 			 p3.setAttribute('src', sc3);
 			 document.getElementById('price').innerHTML = products[i].price;
-			
+			  document.getElementById('quantity').innerHTML = products[i].quantity;
 			/* id=products[i].id;
 			 name1=products[i].name;
 			 price=products[i].price;
@@ -61,7 +55,9 @@ var request = new XMLHttpRequest();
       }
     }
   }
-  
+  function change(x) {
+    document.getElementById('main_img').src = document.getElementById(x.id).src; 
+}
 </script>
 </head>
 <body>
@@ -83,22 +79,31 @@ var request = new XMLHttpRequest();
 			
 		</table>
 </div>
-<div>
-	<p id="name"></p>
-	<div>
-        <img  id="main_img" style="float: left; width: 354px; height: 390px"/>
-    </div>
-	<div >
-		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <img  id="p1" alt="" style="width: 150px; height: 100px" onmouseover="change(this)"/><br>
-		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <img  id="p2" alt="" style="width: 150px; height: 100px" onmouseover="change(this)"/><br>
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <img  id="p3" alt="" style="width: 150px; height: 100px" onmouseover="change(this)"/><br>
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	</div>
+<div style="float:left; width:69%">
+	<p><h2 id="name"></h2></p>
+	<table class="border" style="width:49%; height:70%">
+    <tr width="50%">
+    <td class="border" rowspan="3"><img  id="main_img" style="float: left; width: 200px; height: 390px"/></td>
+    <td class="border"><img  id="p1" alt="" style="width: 100px;height: 150px" onmouseover="change(this)"/><br></td>
+  </tr>
+  <tr>
+    <td class="border"><img  id="p2" alt="" style="width: 100px; height: 150px" onmouseover="change(this)"/><br></td>
+  </tr>
+  <tr>
+    <td class="border"><img  id="p3" alt="" style="width: 100px; height: 150px" onmouseover="change(this)"/><br></td>
+  </tr>
+
+</table>
+</div>
+<div style="float:right; width:29%">
 	<p style="font-family:verdana; font-size:70%; text-align:center">
-			 Price:<h6 id="price"></h6>
+	<br>
+	<br>
+	<h2>PRODUCT DETAILS </h3>
+	<table>
+	<tr><td>PRICE :	</td> <td> <h4 id="price"></h4></td></tr>
+	<tr><td>QUANTITY :	 </td> <td> <h4 id="quantity"></h4> </td></tr>
+     </table>
 	</p>
 </div>
 
