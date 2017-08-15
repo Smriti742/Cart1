@@ -1,0 +1,67 @@
+<html>
+<head>
+<script>
+function session(ref)
+{
+	localStorage.setItem( 'objectToPass',products.ref );
+	alert(products.ref);
+}
+</script>
+</head>
+<body>
+<div>
+<table>
+<tr>
+<td>
+	<table>
+	<tr colspan="2">
+		<td>
+		<a href="display.html" id="p001" onclick="session(this)">
+			<img id="p001" class="fit"  src="img/dress4.jpeg">
+		</a>
+		</td>
+	</tr>
+	<tr colspan="2">
+		<td align="center">SOLID ROYAL BLUE DRESS</td>
+	</tr>
+	<tr>
+		<td><input onclick="addToCart()" type="image" src="img/cart.jpg" alt="Submit" width="50px" height="50px"></td>
+		<td><input id="dress4fav" type="image" src="img/add.png" alt="Submit" width="50px" height="50px"></td>
+	</tr>
+	</table>
+</td>
+<td>	
+	<table>
+	
+	<tr colspan="2">
+		<td><img id="p002" class="fit" src="img/dress2.jpeg"></td>
+	</tr>
+	<tr colspan="2">
+		<td align="center">WOMEN A-LINE BLACK, WHITE DRESS</td>
+	</tr>
+	<tr>
+		<td><input id="dress2cart" type="image" src="img/cart.jpg" alt="Submit" width="50px" height="50px"></td>
+		<td><input id="dress2fav" type="image" src="img/add.png" alt="Submit" width="50px" height="50px"></td>
+	</tr>
+	</table>
+</td>
+<td>
+	<table>
+
+	<tr colspan="2">
+		<td><img id="p003" class="fit" src="img/dress3.jpeg"></td>
+	</tr>
+	<tr colspan="2">
+		<td align="center">WOMEN T SHIRT BROWN DRESS</td>
+	</tr>
+	<tr>
+		<td><input id="dress3cart"  type="image" src="img/cart.jpg" alt="Submit" width="50px" height="50px"></td>
+		<td><input id="dress3fav" type="image" src="img/add.png" alt="Submit" width="50px" height="50px"></td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+</div>			
+</body>
+</html>

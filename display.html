@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PRODUCT DISCRIPTION</title>
+<style>
+.border{
+    border: 1px solid black;
+}
+.resize
+{
+	height:200px;
+
+}
+</style>
+<script>
+function change(x) {
+    document.getElementById('main').src = "img/"+ x.id +".jpeg"; 
+}
+</script>
+</head>
+<body>
+<div>
+		<table width="100%">
+		<tr>
+			<td width="50%" >
+				<h1>SHOPPING CART</h1>
+			</td>
+			<td>
+				<a href="product.html">PRODUCTS</a>
+			</td>
+			<td>
+				<a href="fav.html">FAVOURITES</a>
+			</td>
+			<td>
+				<a href="cart.html">CART</a>
+			</td>
+			
+		</table>
+</div>
+<div>
+<table class="border" style="width:100%; height:70%">
+<tr width="50%">
+    <td class="border" rowspan="3"><img width="200px" id="main" class="fit" src="img/dress4.jpeg"></td>
+    <td class="border"><img class="resize" id="dress4" onmouseover="change(this)" src="img/dress4.jpeg"></td>
+  </tr>
+  <tr>
+    <td class="border"><img class="resize" id="dress4_back" onmouseover="change(this)" src="img/dress4_back.jpeg"></td>
+  </tr>
+  <tr>
+    <td class="border"><img class="resize" id="dress4_full" onmouseover="change(this)" src="img/dress4_full.jpeg"></td>
+  </tr>
+
+</table>
+</div>
+</body>
+</html>
+

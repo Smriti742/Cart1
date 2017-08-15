@@ -1,0 +1,31 @@
+{
+    "products": [
+                  {
+                    "id": "p001",
+                    "name": "SOLID ROYAL BLUE DRESS",
+                    "price": "1000",
+                    "quantity": "2",
+					"src": "img/dress4.jpeg",
+					"src1":"img/dress4_back.jpeg",
+					"src2":"img/dress4_full.jpeg"
+                  },
+                  {
+                    "id": "p002",
+                    "name": "WOMEN A-LINE BLACK, WHITE DRESS",
+                    "price": "800",
+                    "quantity": "4",
+					"src": "img/dress2.jpeg",
+					"src1":"img/dress2_back.jpeg",
+					"src2":"img/dress2_full.jpeg"
+                  },
+                  {
+                    "id": "p003",
+                    "name": "WOMEN T SHIRT BROWN DRESS",
+                    "price": "900",
+                    "quantity": "5",
+					"src": "img/dress3.jpeg",
+					"src1":"img/dress3_back.jpeg",
+					"src2":"img/dress3_full.jpeg"
+                  }
+                ]
+}
