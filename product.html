@@ -1,19 +1,89 @@
 <html>
 <head>
+<style>
+.fit{
+height:500px;
+}
+.border
+{   border: 1px solid black;
+    padding:0 30px 0 30px;
+}
+</style>
 <script>
+
+var AddFav=[];
+var AddCart=[];
+window.onload = function () {
+//var hasCodeRunBefore=localStorage()
+//alert("hi");
+    if (sessionStorage.getItem("hasCodeRunBefore") === null) {
+        AddFav.length=0;
+		AddCart.length=0;
+		
+        sessionStorage.setItem("hasCodeRunBefore", true);
+		//localStorage["AddedFav"]=JSON.stringify(AddFav));
+		sessionStorage.setItem("AddedFav", JSON.stringify(AddFav));
+		sessionStorage.setItem("AddedCart", JSON.stringify(AddCart));
+		//alert(AddFav);
+    }
+	
+}
 function session(ref)
 {
-	localStorage.setItem( 'objectToPass',products.ref );
-	alert(products.ref);
+	localStorage.setItem("id", ref.id);
+	window.location = "display.html";
+
 }
+
+  var request = new XMLHttpRequest();
+
+  request.open("GET", "products.json",true);
+  request.send();
+
+  request.onreadystatechange = function() {
+   alert("hello");
+    if ( request.readyState == 3 ){
+      document.getElementById('users').innerHTML = "Loading..."
+    }
+
+    if( request.readyState == 4) {
+      if( request.status >= 200 && request.status ) {
+        console.log(request);
+        var data = JSON.parse(request.responseText);
+        var products = data.products;
+        var formattedHtml = [];
+        products.forEach(function(product){
+          formattedHtml.push("<div class=\"col-sm-3\" id=\""+product.id+"\" onclick=\"product_details(this.id)\" ><p>" + product.name + "</p><img src=\""+product.src+"\" class=\"img-responsive\" style=\"width:100%\" alt=\"Image\" ></div>")    });
+        formattedHtml = formattedHtml.join('');
+        console.log(formattedHtml);
+        document.getElementById('users').innerHTML =formattedHtml;
+      }
+    }
+  }
 </script>
 </head>
 <body>
 <div>
+<table width="100%">
+		<tr>
+			<td width="50%" >
+				<h1>SHOPPING CART</h1>
+			</td>
+			<td>
+				<a href="product.html">PRODUCTS</a>
+			</td>
+			<td>
+				<a href="fav.html">FAVOURITES</a>
+			</td>
+			<td>
+				<a href="cart.html">CART</a>
+			</td>
+			
+		</table>
 <table>
 <tr>
 <td>
-	<table>
+	<table class="border">
 	<tr colspan="2">
 		<td>
 		<a href="display.html" id="p001" onclick="session(this)">
@@ -31,10 +101,12 @@ function session(ref)
 	</table>
 </td>
 <td>	
-	<table>
+	<table class="border" >
 	
 	<tr colspan="2">
-		<td><img id="p002" class="fit" src="img/dress2.jpeg"></td>
+		<td><a href="display.html" id="p002" onclick="session(this)">
+			<img id="p001" class="fit"  src="img/dress2.jpeg">
+		</a></td>
 	</tr>
 	<tr colspan="2">
 		<td align="center">WOMEN A-LINE BLACK, WHITE DRESS</td>
@@ -46,10 +118,12 @@ function session(ref)
 	</table>
 </td>
 <td>
-	<table>
+	<table class="border">
 
 	<tr colspan="2">
-		<td><img id="p003" class="fit" src="img/dress3.jpeg"></td>
+		<td><a href="display.html" id="p003" onclick="session(this)">
+			<img id="p001" class="fit"  src="img/dress3.jpeg">
+		</a></td>
 	</tr>
 	<tr colspan="2">
 		<td align="center">WOMEN T SHIRT BROWN DRESS</td>
@@ -62,6 +136,9 @@ function session(ref)
 </td>
 </tr>
 </table>
-</div>			
+</div>
+<div class="row" id="users">
+  
+ </div>			
 </body>
 </html>
